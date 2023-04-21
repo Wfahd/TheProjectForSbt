@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController ; 
+use App\Http\Controllers\AffairesController ; 
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,13 @@ use App\Http\Controllers\ClientsController ;
 
 
 Route::resource('/MyClients',ClientsController::class) ; 
+Route::resource('/MyClients/Affaires/cases',AffairesController::class) ; 
+
+Route::get('/MyClients/Affaires/createCase', [AffairesController::class, 'create']);
+
+
+//Route::get('/MyClients/cases', [MyClientsController::class, 'cases']);
+
 
 Auth::routes();
 

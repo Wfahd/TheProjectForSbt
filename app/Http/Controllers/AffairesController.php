@@ -3,19 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Affaire;
 
 
-class ClientsController extends Controller
+class AffairesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-          return view('MyClients.index')
-          ->with('clients', Client::all());
+        return view('Affaires.cases') 
+        ->with('affaires',Affaire::all()) ;
     }
 
     /**
@@ -23,50 +22,39 @@ class ClientsController extends Controller
      */
     public function create()
     {
-       return view('MyClients.create');
+       return view('Affaires.createCase') ; 
     }
-
-       
+ 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        Client::create([
-            'name' => $request->input('name'),
-            'lastName' => $request->input('LastName'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
+        Affaire::create([
+            'Name' => $request->input('name'),
+            'Description' => $request->input('Description'),
             'status' => $request->input('status'),
-            'sex' => $request->input('sex'),
-            'titleOfTheCase' => $request->input('titleOfTheCase'),
             'user_id' => Auth()->user()->id 
         ]);
     
-        return redirect('MyClients');
+        return redirect('/MyClients/Affaires/cases');
     }
-    
 
-    
-
-
-
-
-
-    public function show()
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        
-      //  return view('/MyClients/Affaires/cases') ; 
+       
+      
     }
-    
-   
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-
+        //
     }
 
     /**

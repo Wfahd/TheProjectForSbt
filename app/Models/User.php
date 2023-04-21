@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use App\Models\Client;
+use App\Models\Affaire;
+
 
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -13,6 +15,13 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function affaire(){
+        return $this->hasMany(Affaire::class);
+    }
+
+
+
 
     public function client(){
         return $this->hasMany(Client::class);

@@ -19,6 +19,8 @@
         <th scope="col">Status</th>
         <th scope="col">Sex</th>
         <th scope="col">Case </th>
+        <th scope="col">#### </th>
+
 
 
       </tr>
@@ -37,6 +39,8 @@
         <td>{{$item->sex}}</td>
         <td>{{$item->status}}</td>
         <td>{{$item->titleOfTheCase}}</td>
+        <td> <a href="/MyClients/Affaires/cases">->Les affaires</a> </td>
+
 
       </tr>
       @endif
