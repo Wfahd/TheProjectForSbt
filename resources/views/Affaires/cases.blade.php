@@ -40,7 +40,7 @@
 -->
 
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="card-deck">
@@ -64,9 +64,11 @@
         </div>
       </div>
     </div>
-<br> <div class="card">
+<br>
+
+     <div class="card">
   <div class="card-body">
-    <h3 class="card-title">{{$affaires->name}}}</h3>
+    <h3 class="card-title">$item->name</h3>
     <h6 class="card-subtitle mb-2 text-muted">Completed</h6>
     <p class="card-text">Criminal case against Wilson for embezzlement, trial scheduled for Q2.</p>
     <a href="#" class="btn btn-primary">Edit</a>
@@ -75,14 +77,33 @@
 </div>
 </div>
 </div>
-  <div class="text-center">
-    <a href="/MyClients/Affaires/createCase" class="btn btn-outline-success p-3"> Add </a>
-  </div>
+ 
 
-  </div>
-  
+  </div>-->
+@foreach ($affaires as $item)
+@if(Auth::user()->id == $item->user_id  )
 
-  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-deck">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{$item->Name}}</h3>
+              <h6 class="card-subtitle mb-2 text-muted">{{$item->status}}</h6>
+              <p class="card-text"> {{$item->Description}} </p>
+              <a href="#" class="btn btn-primary">Edit</a>
+            </div>
+          </div>
+          
+          <br>
+          @endif
+          @endforeach
+
+<div class="text-center">
+  <a href="/MyClients/Affaires/createCase" class="btn btn-outline-success p-3"> Add </a>
+</div>
 
   
 @endsection
