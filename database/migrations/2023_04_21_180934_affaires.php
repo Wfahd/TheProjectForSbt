@@ -17,8 +17,9 @@ return new class extends Migration
             $table->longText('Description');
             $table->string('status');
              $table->timestamps();
-             $table->unsignedBigInteger('user_id');
-             $table->foreign('user_id')->references('id')->on('users');
+             $table->unsignedInteger('client_id');//->nullable()->default(null)
+            $table->foreign('client_id')->references('id')->on('clients');
+
         });
     }
 

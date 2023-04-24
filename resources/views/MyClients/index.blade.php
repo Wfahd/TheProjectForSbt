@@ -19,7 +19,6 @@
         <th scope="col">Status</th>
         <th scope="col">Sex</th>
         <th scope="col">Case </th>
-        <th scope="col">#### </th>
 
 
 
@@ -39,7 +38,6 @@
         <td>{{$item->sex}}</td>
         <td>{{$item->status}}</td>
         <td>{{$item->titleOfTheCase}}</td>
-        <td> <a href="/MyClients/Affaires/cases">->Les affaires</a> </td>
 
 
       </tr>
@@ -49,13 +47,26 @@
     </tbody>
   </table>
 <div class="text-center">
-    <a href="/MyClients/create" class="btn btn-outline-success fw-bold" > Add </a>
-</div>
-
-
-
+    <a href="/MyClients/create" class="btn btn-outline-success fw-bold" data-client-id="123" > +Add </a>
+    <a href="/MyClients/Affaires/cases" class="btn btn-outline-info fw-bold">->les Affaires</a>
 
 </div>
+
+
+
+
+</div>
+
+<script>
+  const clientLink = document.getElementById('client-link');
+
+  clientLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    const clientId = clientLink.getAttribute('data-client-id');
+    window.location.href = '/clients/' + clientId + '/cases';
+  });
+</script>
+
   
     
 @endsection

@@ -81,7 +81,6 @@
 
   </div>-->
 @foreach ($affaires as $item)
-@if(Auth::user()->id == $item->user_id  )
 
 
   <div class="container">
@@ -90,7 +89,17 @@
         <div class="card-deck">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">{{$item->Name}}</h3>
+              <div class="row" >
+                <div class="col"> 
+                  <h3 class="card-title fw-bold">{{$item->Name}}</h3>
+
+                </div>
+                 <div class="col"> 
+                  <h3 class="card-title text-danger fw-bold text-decoration-underline">{{$item->client->name}} {{$item->client->lastName}}</h3>
+
+                </div>
+
+           </div>
               <h6 class="card-subtitle mb-2 text-muted">{{$item->status}}</h6>
               <p class="card-text"> {{$item->Description}} </p>
               <a href="#" class="btn btn-primary">Edit</a>
@@ -98,7 +107,6 @@
           </div>
           
           <br>
-          @endif
           @endforeach
 
 <div class="text-center">

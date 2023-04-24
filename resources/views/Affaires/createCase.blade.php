@@ -20,6 +20,22 @@
       <option value="Completed">Completed</option>
     </select>
   </div>
+    <br>
+    <div class="form-group">
+<label for="case-status">case's client</label>
+<select  name="client_id" required>
+@foreach ($client as $item)
+@if(Auth::user()->id == $item->user_id)
+
+
+  <option value="{{$item->id}}">{{$item->id}}</option>
+  @endif
+  @endforeach
+</select>
+</div>
+
+
+  
   <div class="text-center" >
     <button type="submit" class="btn btn-outline-primary">Submit</button>
 
