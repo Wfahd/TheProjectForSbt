@@ -8,6 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <head>
+        <!-- other meta tags and stylesheets -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-j97dYaUZnC1z/vxRiKjI+CJVUpyKItq5lLXQb5/DjK5l5+3qhe0xQV7MAMtCCfhkj/h7j0+xW9HDv7OWu/71hA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      </head>
+      
 
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">

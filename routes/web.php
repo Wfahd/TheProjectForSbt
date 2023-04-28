@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientsController ; 
-use App\Http\Controllers\AffairesController ; 
+use App\Http\Controllers\ClientsController; 
+use App\Http\Controllers\AffairesController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -14,22 +14,28 @@ use App\Http\Controllers\AffairesController ;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
- Route::get('/', function () {
+Route::get('/', function () {
     return view('index');
 });
-//Route::get('/MyClients',[ClientsController::class,'index']);
 
-
-
-Route::resource('/MyClients',ClientsController::class) ; 
-Route::resource('/MyClients/Affaires/cases',AffairesController::class) ; 
+Route::resource('/MyClients', ClientsController::class); 
+Route::resource('/MyClients/Affaires/cases', AffairesController::class); 
 
 Route::get('/MyClients/Affaires/createCase', [AffairesController::class, 'create']);
+Route::get('/MyClients', [ClientsController::class, 'index'])->name('clients.index');
+Route::get('/MyClients', [ClientsController::class, 'index'])->name('clients.index');
 
 
-//Route::get('/MyClients/cases', [MyClientsController::class, 'cases']);
+
+Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+Route::get('/MyClients/edit/{id}', [ClientsController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/{id}', [ClientsController::class, 'update'])->name('clients.update');
+
+
 
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+

@@ -15,7 +15,7 @@ class ClientsController extends Controller
     {
 
           return view('MyClients.index')
-          ->with('clients', Client::all());
+          ->with('clients', Client::get());
     }
 
     /**
@@ -32,6 +32,7 @@ class ClientsController extends Controller
      */
     public function store(Request $request)
     {
+        
         Client::create([
             'name' => $request->input('name'),
             'lastName' => $request->input('LastName'),
@@ -56,7 +57,6 @@ class ClientsController extends Controller
     public function show()
     {
         
-      //  return view('/MyClients/Affaires/cases') ; 
     }
     
    
@@ -66,22 +66,45 @@ class ClientsController extends Controller
      */
     public function edit(string $id)
     {
-
+        $client = Client::find($id);
+    
+        return view('MyClients.edit', compact('client'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
     {
-        //
+        $client = Client::find($id);
+    
+        if (!$client) {
+            return redirect('MyClients')->with('error', 'Client not found!');
+        }
+    
+        $client->name = $request->input('name');
+        $client->lastName = $request->input('LastName');
+        $client->email = $request->input('email');
+        $client->phone = $request->input('phone');
+        $client->status = $request->input('status');
+        $client->sex = $request->input('sex');
+        $client->titleOfTheCase = $request->input('titleOfTheCase');
+        $client->save();
+    
+        return redirect('MyClients')->with('success');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $client = Client::find($id);
+    
+        if (!$client) {
+            return redirect('MyClients')->with('error', 'Client not found!');
+        }
+    
+        $client->delete();
+    
+        return redirect('MyClients')->with('success');
     }
 }
