@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label for="LastName">Last Name</label>
-                <input type="text" class="form-control" id="LastName" name="LastName" value="{{ $client->LastName }}">
+                <input type="text" class="form-control" id="LastName" name="LastName" value="{{ $client->astName }}">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
@@ -38,10 +38,7 @@
                     <option value="female" {{ $client->sex === 'female' ? 'selected' : '' }}>Female</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="titleOfTheCase">Title of the case</label>
-                <textarea class="form-control" id="titleOfTheCase" name="titleOfTheCase">{{ $client->titleOfTheCase }}</textarea>
-            </div>
+            
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>

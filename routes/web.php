@@ -25,6 +25,9 @@ Route::get('/MyClients/Affaires/createCase', [AffairesController::class, 'create
 Route::get('/MyClients', [ClientsController::class, 'index'])->name('clients.index');
 Route::get('/MyClients', [ClientsController::class, 'index'])->name('clients.index');
 
+Route::get('clients/{id}/cases', [AffairesController::class, 'show'])->name('Affaires.cases');
+
+
 
 
 Route::delete('/clients/{id}', [ClientsController::class, 'destroy'])->name('clients.destroy');

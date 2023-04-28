@@ -17,8 +17,9 @@ return new class extends Migration
             $table->longText('Description');
             $table->string('status');
              $table->timestamps();
-             $table->unsignedInteger('client_id');//->nullable()->default(null)
-            $table->foreign('client_id')->references('id')->on('clients');
+             $table->string('priorité');
+             $table->unsignedInteger('client_id');
+             $table->foreign('client_id')->references('id')->on('clients');
 
         });
     }

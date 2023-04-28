@@ -6,7 +6,7 @@
 <div class="card p-4">
 
 <div class="container">
-    <h1 class="fw-bolder text-center text-decoration-underline p-4" >Add Client</h1>
+    <h2 class="fw-bolder text-primary text-center text-decoration-underline p-4" >Add Client</h2>
 
 
     <form action="/MyClients" method="POST"> @csrf
@@ -56,14 +56,7 @@
             <input type="tel" class="form-control" id="phone" name="phone" required>
           </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-md-3">
-              <label for="phone" class="form-label d-inline-block text-md-end">Case Title</label>
-            </div>
-            <div class="col-md-9">
-              <input type="tel" class="form-control" id="case" name="titleOfTheCase" required>
-            </div>
-          </div>
+        
         <div class="row mb-3">
           <div class="col-md-3">
             <label for="sex" class="form-label d-inline-block text-md-end">Sex</label>
@@ -80,9 +73,10 @@
           </div>
         </div>
         <div class="text-center">
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
-
-        </div>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
+      
+          <a href="/MyClients/" type="submit" class="btn btn-outline-secondary">Annuler</a>
+      </div>
       </form>
     </div>
   

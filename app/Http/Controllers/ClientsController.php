@@ -54,10 +54,7 @@ class ClientsController extends Controller
 
 
 
-    public function show()
-    {
-        
-    }
+   
     
    
 
@@ -105,6 +102,6 @@ class ClientsController extends Controller
     
         $client->delete();
     
-        return redirect('MyClients')->with('success');
+        return redirect('MyClients')->with('success',"success");
     }
 }

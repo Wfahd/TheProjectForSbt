@@ -17,7 +17,9 @@ class Affaire extends Model
         'Name',
         'Description',
         'status',
-        'client_id'
+        'client_id',
+        'created_at',
+        'priorité'
 ];
 
 
