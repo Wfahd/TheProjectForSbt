@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Affaire;
+use App\Models\Client;
+
 
 
 class AffairesController extends Controller
@@ -22,24 +24,27 @@ class AffairesController extends Controller
      */
     public function create()
     {
-       return view('Affaires.createCase') ; 
+       return view('Affaires.createCase') 
+         ->with('client',Client::get())             ; 
     }
+ 
  
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        Affaire::create([
-            'Name' => $request->input('name'),
-            'Description' => $request->input('Description'),
-            'status' => $request->input('status'),
-            'user_id' => Auth()->user()->id 
-        ]);
+   public function store(Request $request)
+{
+    $client = Client::where('user_id', Auth()->user()->id)->first();
     
-        return redirect('/MyClients/Affaires/cases');
-    }
+    Affaire::create([
+        'Name' => $request->input('name'),
+        'Description' => $request->input('Description'),
+        'status' => $request->input('status'),
+        'client_id' => $request->input('client_id'),
+    ]);
 
+    return redirect('/MyClients/Affaires/cases');
+}
     /**
      * Display the specified resource.
      */
